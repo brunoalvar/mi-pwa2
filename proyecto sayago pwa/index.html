@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mis tareas</title>
+
+    <meta name="theme-color" content="#1e88e5">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="contenedor">
+        <h1>Mis tareas</h1>
+        <p class="subtitulo">Organizá tus actividades fácilmente.</p>
+
+        <div class="nueva-tarea">
+            <input
+                type="text"
+                id="texto"
+                placeholder="Escribí una tarea..."
+                autocomplete="off"
+            >
+            <button id="agregar">Agregar</button>
+        </div>
+
+        <p id="contador">0 tareas pendientes</p>
+
+        <ul id="lista"></ul>
+
+        <button id="borrarCompletadas" class="secundario">
+            Borrar completadas
+        </button>
+    </main>
+
+    <script src="app.js"></script>
+
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register("./sw.js")
+                    .catch(error => console.error("Error:", error));
+            });
+        }
+    </script>
+</body>
+</html>
